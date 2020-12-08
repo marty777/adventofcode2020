@@ -10,8 +10,9 @@ from src.day4 import day4
 from src.day5 import day5
 from src.day6 import day6
 from src.day7 import day7
+from src.day8 import day8
 
-MAXDAY = 7
+MAXDAY = 8
 
 def usage():
     print("Usage:")
@@ -48,6 +49,7 @@ def main():
         5:day5,
         6:day6,
         7:day7,
+        8:day8,
     }
     days[day](inpath)
     
