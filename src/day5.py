@@ -1,8 +1,5 @@
 #day5.py
 
-import sys
-from collections import namedtuple
-
 rows = 128
 seats_per_row = 8
 

@@ -1,8 +1,5 @@
 #day6.py
 
-import sys
-from collections import namedtuple
-
 num_questions = 26
 
 class AnswerData:

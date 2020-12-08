@@ -1,8 +1,5 @@
 #day4.py
 
-import sys
-from collections import namedtuple
-
 class PassportData:
     def __init__(self):
         self.dict = {}
