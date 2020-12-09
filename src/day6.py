@@ -31,7 +31,6 @@ class AnswerData:
             if answer:
                 count += 1
         return count
-    
 
 def day6(infile):
     f = open(infile, 'r')
@@ -54,8 +53,3 @@ def day6(infile):
     
     print("Part 1: %d" % answered_count1)
     print("Part 2: %d" % answered_count2)
-    # print("Part 2: %d" % valid2)
-        
-    
-    
-    
