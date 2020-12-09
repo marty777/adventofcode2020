@@ -17,7 +17,6 @@ class PassportData:
                 return False
         return True
     def is_valid_2(self):
-        required = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
         #byr
         if ('byr' not in self.dict):
             return False
@@ -98,14 +97,6 @@ def day4(infile):
             valid1 += 1
         if entry.is_valid_2():
             valid2 += 1
-        #entry.is_valid_2()
-        #entry.printself()
-    # entries[0].dict['eyr'] = '2020'
-    # entries[0].dict['hgt'] = '189cm'
-    # entries[0].dict['hcl'] = '#123abc'
-    # entries[0].dict['ecl'] = 'oth'
-    # entries[0].dict['pid'] = '00000000a'
-    # entries[0].is_valid_2()
     
     print("Part 1: %d" % valid1)
     print("Part 2: %d" % valid2)

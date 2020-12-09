@@ -1,7 +1,6 @@
 #day2.py
 
 import sys
-from collections import namedtuple
 
 class PasswordLine:
     def __init__(self, minstr, maxstr, letter, password):
