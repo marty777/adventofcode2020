@@ -32,6 +32,8 @@ def day8(infile):
             instructions2[i].inst = 'jmp'
         elif instructions2[i].inst == 'jmp':
             instructions2[i].inst = 'nop'
+        else:
+            continue
         program2.set_program(instructions2)
         while not program2.loop_found() and not program2.terminated:
             program2.execute()
