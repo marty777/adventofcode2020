@@ -12,36 +12,17 @@ from src.day6 import day6
 from src.day7 import day7
 from src.day8 import day8
 from src.day9 import day9
+from src.day10 import day10
 
-MAXDAY = 9
-
-def usage():
+def usage(maxday):
     print("Usage:")
     print("\tpython adventofcode2020.py [DAY] [INPUT FILE] ...\n")
-    print("\t[DAY]\t\tThe advent program day to run (between 1 and %d)" % MAXDAY)
+    print("\t[DAY]\t\tThe advent program day to run (between 1 and %d)" % maxday)
     print("\t[INPUT FILE]\tThe relative or absolute path to the input file.")
     print("\nExample:")
     print("\tpython adventofcode2020.py 1 data/day1/input.txt")
     
-
 def main():
-    # parse the day and input data file from command line args
-    if len(sys.argv) < 3:
-        usage()
-        return
-    day = 0;
-    try:
-        day = int(sys.argv[1])
-    except ValueError:
-        usage()
-        return
-    if(day < 1 or day > MAXDAY):
-        usage()
-        return
-    if(not os.path.isfile(sys.argv[2])):
-        usage()
-        return
-    inpath = sys.argv[2]
     days = {
         1:day1,
         2:day2,
@@ -52,7 +33,25 @@ def main():
         7:day7,
         8:day8,
         9:day9,
+        10:day10,
     }
+    # parse the day and input data file from command line args
+    if len(sys.argv) < 3:
+        usage(len(days))
+        return
+    day = 0;
+    try:
+        day = int(sys.argv[1])
+    except ValueError:
+        usage(len(days))
+        return
+    if(day < 1 or day > len(days)):
+        usage(len(days))
+        return
+    if(not os.path.isfile(sys.argv[2])):
+        usage(len(days))
+        return
+    inpath = sys.argv[2]
     days[day](inpath)
     
 main()

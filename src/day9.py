@@ -39,9 +39,12 @@ def day9(infile):
                     if entries[k] < min:
                         min = entries[k]
                 part2 = max + min
+                break
             elif sum > part1:
                 break
-    
+        if part2 > -1:
+            break
+            
     print("Part 2: %d" % part2)
     
     
