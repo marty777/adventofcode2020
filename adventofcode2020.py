@@ -16,6 +16,7 @@ from src.day9 import day9
 from src.day10 import day10
 from src.day11 import day11
 from src.day12 import day12
+from src.day13 import day13
 
 def usage(maxday):
     print("Usage:")
@@ -39,6 +40,7 @@ def main():
         10:day10,
         11:day11,
         12:day12,
+        13:day13,
     }
     # parse the day and input data file from command line args
     if len(sys.argv) < 3:
@@ -61,6 +63,6 @@ def main():
     days[day](inpath)
     end = datetime.now()
     diff = end - start
-    print("Completed in %d ms" % (diff.microseconds/1000 + (1000 * diff.seconds)))
+    print("Completed in %d ms" % ((diff.microseconds/1000) + (1000 * diff.seconds)))
     
 main()
