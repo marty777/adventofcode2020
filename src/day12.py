@@ -71,10 +71,6 @@ class Ferry:
 def day12(infile):
     f = open(infile, 'r')
     lines = f.readlines()
-    instructions = [];
-    max_index = 0
-    grid = []
-    
     entries = []
     
     ferry = Ferry()

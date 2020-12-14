@@ -138,8 +138,7 @@ def list3d(height, width):
 def day11(infile):
     f = open(infile, 'r')
     lines = f.readlines()
-    instructions = [];
-    max_index = 0
+
     grid = []
     
     for i in range(0,len(lines)):

@@ -16,7 +16,6 @@ def day10(infile):
     f = open(infile, 'r')
     lines = f.readlines()
     entries = [];
-    max_index = 0
     
     for line in lines:
         entries.append(int(line))
