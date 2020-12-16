@@ -47,16 +47,7 @@ class Ticket:
             if not valid:
                 invalid_sum += val
         return invalid_sum
-def iterate(numbers, previous, i):
-    if previous in numbers:
-        last = numbers[previous]
-        numbers[previous] = i
-        return i - last
-    else:
-        numbers[previous] = i
-        return 0
-
-
+        
 def day16(infile):
     f = open(infile, 'r')
     lines = f.readlines()
@@ -128,7 +119,6 @@ def day16(infile):
             done = True
     
     product = 1
-    
     for i in range(0, len(rules)):
         if(rules[i].name.find(departure_str) != -1):
             product *= my_ticket.vals[assignments[i]]
