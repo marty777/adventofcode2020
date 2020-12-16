@@ -97,20 +97,6 @@ def day16(infile):
             if len(candidates) == 1:
                 assignments[i] = candidates[0]
                 remaining -= 1
-            else:
-                not_previously_assigned = []
-                for j in range(0,len(candidates)):
-                    found = False
-                    for index in assignments:
-                        if assignments[index] == candidates[j]:
-                            found = True
-                            break
-                    if not found:
-                        not_previously_assigned.append(candidates[j])
-                    
-                if len(not_previously_assigned) == 1:
-                    assignments[i] = not_previously_assigned[0]
-                    remaining -= 1
         curr_departures = 0
         for a in assignments:
             if(rules[a].name.find(departure_str) != -1):
