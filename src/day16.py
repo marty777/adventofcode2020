@@ -36,8 +36,16 @@ class Ticket:
         split = line.split(',')
         for s in split:
             self.vals.append(int(s))
+    # reddit points out that a ticket with a zero field that doesn't match any rules 
+    # would cause issues if checking for valid tickets using the sum of invalid fields. 
+    # hence the two return values
+    # note that this did get me, although it didn't prevent me from finding the solution 
+    # to part 2. while i failed to filter out one invalid ticket, it didn't prevent me 
+    # from finding all departure fields. it did stop me from finding a solution that matched 
+    # up all fields.
     def test1(self, rules):
         invalid_sum = 0
+        invalid = False
         for val in self.vals:
             valid = False
             for rule in rules:
@@ -46,7 +54,8 @@ class Ticket:
                     break
             if not valid:
                 invalid_sum += val
-        return invalid_sum
+                invalid = True
+        return invalid_sum, invalid
         
 def day16(infile):
     f = open(infile, 'r')
@@ -75,17 +84,14 @@ def day16(infile):
     
     invalid_sum = 0
     for ticket in tickets:
-        invalid = ticket.test1(rules)
-        if(invalid == 0):
+        invalid_count, invalid = ticket.test1(rules)
+        if(not invalid):
             real_tickets.append(ticket)
-        invalid_sum += ticket.test1(rules)
+        invalid_sum += invalid_count
     print("Part 1: %d" % invalid_sum)
     
     departure_str = "departure"
-    departure_val_count = 0
-    for rule in rules:
-        if(rule.name.find(departure_str) != -1):
-            departure_val_count += 1
+    
     done = False
     remaining = len(rules)
     assignments = {}
@@ -98,10 +104,7 @@ def day16(infile):
                 assignments[i] = candidates[0]
                 remaining -= 1
         curr_departures = 0
-        for a in assignments:
-            if(rules[a].name.find(departure_str) != -1):
-                curr_departures += 1
-        if(curr_departures >= departure_val_count):
+        if(remaining == 0):
             done = True
     
     product = 1
