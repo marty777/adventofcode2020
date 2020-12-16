@@ -26,8 +26,7 @@ def day15(infile):
     while i < 30000000:
         latest = iterate(numbers, latest,i)
         if i == 2020 - 1:
-            print("Part 1: %d" % latest)
-                   
+            print("Part 1: %d" % latest)       
         i+=1
     print("Part 2: %d" % latest)
     
