@@ -103,6 +103,8 @@ def day16(infile):
             if len(candidates) == 1:
                 assignments[i] = candidates[0]
                 remaining -= 1
+            if(remaining == 0):
+                break
         curr_departures = 0
         if(remaining == 0):
             done = True

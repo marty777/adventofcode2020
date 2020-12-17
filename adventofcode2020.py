@@ -20,6 +20,7 @@ from src.day13 import day13
 from src.day14 import day14
 from src.day15 import day15
 from src.day16 import day16
+from src.day17 import day17
 
 def usage(maxday):
     print("Usage:")
@@ -47,6 +48,7 @@ def main():
         14:day14,
         15:day15,
         16:day16,
+        17:day17,
     }
     # parse the day and input data file from command line args
     if len(sys.argv) < 3:
