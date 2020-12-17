@@ -114,7 +114,8 @@ def iterate1(gridA, gridB):
         for y in range(min_y - 1, max_y + 2):
             for x in range(min_x - 1, max_x + 2):
                 gridB[z][y][x] = evalpos(gridA, z, y, x)
-    
+
+# function taken from https://www.geeksforgeeks.org/python-creating-multidimensional-dictionary/
 def multi_dict(K, type): 
     if K == 1: 
         return defaultdict(type) 
