@@ -1,23 +1,5 @@
 #day18.py
 
-class MathNode:
-    def __init__(self, string):
-        self.op = '+'
-        self.left = ''
-        self.right = ''
-        self.op = '+'
-        self.val = 0
-
-def digit(symbol):
-    return(symbol >= '0' and symbol <= '9')
-
-def symbol_count(symbols, symbol):
-    count = 0
-    for i in range(0, len(symbols)):
-        if(symbols[i] == symbol):
-            count += 1
-    return count
-
 def recurse(symbols, part):
     # first resolve brackets
     # if part == 1 - resolve + and * in order
@@ -41,9 +23,7 @@ def recurse(symbols, part):
                     break
                 index2 += 1
         index += 1
-        if index >= len(symbols):
-            if symbol_count(symbols, '(') > 0:
-                index = 0
+        
     if(part == 1):
         index = 0
         while index < len(symbols):
@@ -86,9 +66,9 @@ def eval(start_line, mode):
         if start_line[index] == '\n' or start_line[index] == ' ':
             index += 1
             continue
-        if(digit(start_line[index])):
+        if( (start_line[index].isdigit() )):
             i2 = index
-            while i2 < len(start_line) and digit(start_line[i2]):
+            while i2 < len(start_line) and start_line[i2].isdigit():
                 i2 += 1
             symbols.append(start_line[index:i2])
             index = i2
