@@ -2,8 +2,8 @@
 
 def recurse(symbols, part):
     # first resolve brackets
-    # if part == 1 - resolve + and * in order
-    # if part == 2 then resolve + then resolve *
+    # if part == 1 resolve + and * in order
+    # if part == 2 resolve + then resolve *
     index = 0
     while index < len(symbols):
         nesting = 0
@@ -58,7 +58,7 @@ def recurse(symbols, part):
             index += 1
     return int(symbols[0])
 
-def eval(start_line, mode):
+def eval(start_line, part):
     # parse into symbols
     symbols = []
     index = 0
@@ -75,7 +75,7 @@ def eval(start_line, mode):
         else:
             symbols.append(start_line[index])
             index += 1
-    return recurse(symbols, mode)
+    return recurse(symbols, part)
 
 def day18(infile):
     f = open(infile, 'r')
