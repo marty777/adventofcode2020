@@ -63,9 +63,9 @@ class MapTile:
                 else:
                     print('.', end='')
             print('')
-    # returns number of possible matching configurations with neighbor time
+    # returns number of possible matching configurations with neighbor
     # if only one possible, returns the rotation and reflection for the neigbor
-    def test_neigbor(self, tile, dir, self_transformation):
+    def test_neighbor(self, tile, dir, self_transformation):
         src = self.get_edge(dir, self_transformation.rotation, self_transformation.reflect_x, self_transformation.reflect_y)
         dest_dir = opposite_dir(dir)
         neigbor_x, neighbor_y = neighbor_pos(self_transformation.x, self_transformation.y, dir)
@@ -133,7 +133,7 @@ def solve_layout(maps):
     
     # pick a fixed orientation for one tile and build others around it
     fixed = {}
-    fixed[0] = TilePos(0,0, 2, True, False) # no transformation, fix position at 0, 0
+    fixed[0] = TilePos(0,0, 0, False, False) # no transformation, fix position at 0, 0 for tile 0
     while len(fixed) < len(maps):
         for i in range(0, len(maps)):
             candidates = []
@@ -159,7 +159,7 @@ def solve_layout(maps):
                     if not set[dir]:
                         for k in range(0, len(maps)):
                             if k not in fixed:
-                                match_count, rot, ref_x, ref_y = maps[i].test_neigbor(maps[k], dir, fixed[i])
+                                match_count, rot, ref_x, ref_y = maps[i].test_neighbor(maps[k], dir, fixed[i])
                                 if(match_count == 1):
                                     new_x, new_y = neighbor_pos(fixed[i].x, fixed[i].y, dir)
                                     fixed[k] = TilePos(new_x, new_y, rot, ref_x, ref_y)
