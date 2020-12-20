@@ -42,7 +42,7 @@ def day19(infile):
                 maxlen = len(line)
     
     # using maxlen, length of largest message, as heuristic to limit
-    # depth of search
+    # depth of recursion
     regex = re.compile(generate_regex(rules, '0', 0, maxlen//4))
     matches = 0
     for m in messages:
