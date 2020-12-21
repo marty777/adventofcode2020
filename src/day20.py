@@ -107,16 +107,10 @@ class MapTile:
                 ret.append(self.grid[transform_y][transform_x])
         return ret
 
+# returns SOUTH if NORTH, EAST if WEST, etc
 def opposite_dir(dir):
-    if(dir == NORTH):
-        return SOUTH
-    if(dir == EAST):
-        return WEST
-    if(dir == SOUTH):
-        return NORTH
-    if(dir == WEST):
-        return EAST
-        
+    return (dir + 2) % 4
+    
 def neighbor_pos(src_x,src_y,dest_dir):
     if dest_dir == NORTH:
         return src_x, src_y+1
@@ -136,7 +130,6 @@ def solve_layout(maps):
     fixed[0] = TilePos(0,0, 0, False, False) # no transformation, fix position at 0, 0 for tile 0
     while len(fixed) < len(maps):
         for i in range(0, len(maps)):
-            candidates = []
             # test up, down, left, right for all other tiles under
             # all other reflections and rotations
             # ideally there will only be one solution for one of those
@@ -202,12 +195,8 @@ def monster_scan(map, rotation, reflect_x):
                 monster_pixels += 1
     
     # not transforming dimensions, better hope width and height are identical
-    for i in range(0, map.height()):
-        for j in range(0, map.width()):
-            if j + len(monster[0]) >= map.width():
-                continue
-            if i + len(monster) >= map.height():
-                continue
+    for i in range(0, map.height() - len(monster)):
+        for j in range(0, map.width() - len(monster[0])):           
             matched_pixels = 0
             for m_y in range(0, len(monster)):
                 for m_x in range(0, len(monster[m_y])):
@@ -289,8 +278,8 @@ def day20(infile):
     part1, positions = solve_layout(maps)
     print("Part 1: %d" % part1)
     image = extract_image(maps, positions)
-    for i in range(0, 4):
-        for j in range(0,2):
+    for i in range(0,4): # rotations
+        for j in range(0,2): # reflection
             result = monster_scan(image, i, j==1)
             if result > 0:
                 print("Part 2: %d" % result)
