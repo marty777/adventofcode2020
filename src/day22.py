@@ -1,12 +1,8 @@
 #day22.py
 
 def handstr(deck1, deck2):
-    one = ''
-    two = ''
-    for d in deck1:
-        one += (str(d) + ',')
-    for d in deck2:
-        two += str(d) + ','
+    one = ",".join(str(d) for d in deck1)
+    two = ",".join(str(d) for d in deck2)
     return '['+one+'][' +two+ ']'
 
 def game2(deck1, deck2, depth):
@@ -40,7 +36,6 @@ def game2(deck1, deck2, depth):
                 deck2.append(top2)
                 deck2.append(top1)
         round += 1
-        
     if(winner > 0):
         return winner
     else:
