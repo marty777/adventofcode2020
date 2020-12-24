@@ -167,12 +167,8 @@ def day23(infile):
         direct_index[index] = cuplist.append(index)
         index += 1
     cuplist.setmax(1000000)
-    one_node = cuplist.findnodebyval(1)
     for i in range(0, 10000000):
         move(cuplist, direct_index)
-    node = cuplist.start
-    steps = 0
-    while(node.val != 1):
-        node = node.next
-        steps += 1
-    print("Part 2: %d" % (node.next.val * node.next.next.val))
+    one_node = direct_index[1]
+    print("Part 2: %d" % (one_node.next.val * one_node.next.next.val))
+    
