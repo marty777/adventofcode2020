@@ -18,6 +18,8 @@ def coord_from_moves(moves):
 def hex_bounds(hex):
     min_x = max_x = min_y = max_y = 0
     for coords in hex:
+        if hex[coords] % 2 == 0:
+            continue
         split = coords.split(',')
         x = int(split[0])
         y = int(split[1])
@@ -97,8 +99,8 @@ def advance_day(hexA, hexB):
     for x in range(min_x, max_x + 1):
         for y in range(min_y, max_y + 1):
             coords = coord_str(x,y)
-            hexB[coords] = test_coord(hexA,x,y)
-    
+            if(test_coord(hexA,x,y) == 1):
+                hexB[coords] = 1
     
 def day24(infile):
     f = open(infile, 'r')
