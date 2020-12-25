@@ -14,4 +14,4 @@ Example:
 		
 A big hats off to **Eric Wastl** for putting together such excellent puzzles yet again!
 
-![alt text](https://github.com/marty777/adventofcode2020/raw/master/complete.png "All done")
+![alt text](https://github.com/marty777/adventofcode2020/blob/main/complete.png "All done")
