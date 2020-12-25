@@ -28,6 +28,7 @@ from src.day21 import day21
 from src.day22 import day22
 from src.day23 import day23
 from src.day24 import day24
+from src.day25 import day25
 
 def usage(maxday):
     print("Usage:")
@@ -63,6 +64,7 @@ def main():
         22:day22,
         23:day23,
         24:day24,
+        25:day25,
     }
     # parse the day and input data file from command line args
     if len(sys.argv) < 3:
@@ -80,6 +82,7 @@ def main():
     if(not os.path.isfile(sys.argv[2])):
         usage(len(days))
         return
+    print("## DAY %d ##" % day)
     inpath = sys.argv[2]
     start = datetime.now()
     days[day](inpath)

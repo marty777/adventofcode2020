@@ -1,5 +1,6 @@
 #day24.py
 
+#using this hex grid coordinate scheme: http://devmag.org.za/2013/08/31/geometry-with-hex-coordinates/
 def coord_from_moves(moves):
     dirs = {}
     dirs['e'] = [1, 0]
@@ -62,10 +63,7 @@ def hexbystr(hex, coords):
 
 def hexbycoords(hex, x, y):
     coords = coord_str(x,y)
-    if coords in hex:
-        return hex[coords] % 2
-    else:
-        return 0
+    return hexbystr(hex,coords)
 
 def coord_str(x,y):
     return str(x)+','+str(y)
@@ -87,10 +85,9 @@ def test_coord(hex, x, y):
 def count(hex):
     count = 0
     min_x,max_x, min_y,max_y = hex_bounds(hex)
-    for x in range(min_x, max_x + 1):
-        for y in range(min_y, max_y + 1):
-            if hexbycoords(hex, x, y) == 1:
-                count += 1
+    for coord in hex:
+        if hexbystr(hex,coord) == 1:
+            count += 1
     return count
     
 def advance_day(hexA, hexB):
@@ -117,13 +114,12 @@ def day24(infile):
     print("Part 1: %d" % part1)
     
     hexA = seen.copy()
-    hexB = seen.copy()
+    hexB = {}
     for d in range(0, 100):
         if d % 2 == 0:
             advance_day(hexA, hexB)
         else:
             advance_day(hexB, hexA)
-        
     part2 = count(hexA)
     print("Part 2: %d" % part2)
     

@@ -11,3 +11,7 @@ Usage:
 Example:
 
 		python adventofcode2020.py 1 data/day1/input.txt
+		
+A big hats off to **Eric Wastl** for putting together such excellent puzzles yet again!
+
+![alt text](https://github.com/marty777/adventofcode2020/raw/master/complete.png "All done")
